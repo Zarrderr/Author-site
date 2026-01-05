@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Авторский блог Павла Задорина</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<canvas id="weather"></canvas>
+
+<button class="mobile-menu-btn">☰</button>
+
+<div class="layout">
+
+  <!-- ЛЕВОЕ МЕНЮ -->
+  <aside class="sidebar">
+    <div class="author">
+      <div class="author-blog">Авторский блог:</div>
+      <div class="author-name">Павел Задорин</div>
+    </div>
+
+    <nav class="menu">
+      <button data-section="home" class="active">Мои книги и произведения</button>
+      <button data-section="about">Об авторе</button>
+      <button data-section="poems">Стихи</button>
+      <button data-section="books">Книги</button>
+      <button data-section="projects">Творческие проекты</button>
+      <button data-section="art">Картины</button>
+      <button data-section="reviews">Отзывы</button>
+    </nav>
+
+    <div class="contacts">
+      <div class="contacts-title">Контакты:</div>
+      <div class="icons">
+        <a href="#"><img src="assets/icons/mail.png" alt=""></a>
+        <a href="#"><img src="assets/icons/vk.png" alt=""></a>
+        <a href="#"><img src="assets/icons/telegram.png" alt=""></a>
+        <a href="#"><img src="assets/icons/yandex.png" alt=""></a>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ПРАВЫЙ БЛОК -->
+  <main class="content">
+    <section id="content-area" class="section active">
+      <div class="hero">
+        <img src="assets/books/hero.png" alt="">
+        <div class="hero-text">
+          <h1>Мои книги и произведения</h1>
+          <p>
+            Здесь собраны мои романы, стихи и творческие проекты.
+            Вдохновение, пришедшее из снов, дорог, трудностей и закатов.
+          </p>
+          <p>
+            Рекомендую начать знакомство с раздела «Книги».
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

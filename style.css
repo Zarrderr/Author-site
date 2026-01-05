@@ -1,0 +1,192 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Segoe UI", sans-serif;
+  color: white;
+  overflow-x: hidden;
+}
+
+/* ===== ФОН ===== */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  filter: brightness(0.75);
+  z-index: -2;
+}
+
+/* ===== КАНВАС ПОГОДЫ ===== */
+#weather {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+}
+
+/* ===== ОБЩИЙ ЛЕЙАУТ ===== */
+.layout {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+  min-height: 100vh;
+}
+
+/* ===== SIDEBAR ===== */
+.sidebar {
+  width: 300px;
+  background: rgba(0,0,0,0.55);
+  border-radius: 20px;
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.author-blog,
+.contacts-title {
+  font-size: 16px;
+  margin-bottom: 6px;
+  text-shadow: 1px 1px 2px black;
+}
+
+.author-name {
+  font-size: 26px;
+  font-weight: bold;
+  margin-bottom: 30px;
+  text-shadow: 2px 2px 3px black;
+}
+
+/* ===== МЕНЮ ===== */
+.menu button {
+  display: block;
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 12px;
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 18px;
+  text-align: left;
+  cursor: pointer;
+  border-radius: 10px;
+  text-shadow: 1px 1px 2px black;
+  transition: 0.3s;
+}
+
+.menu button:hover,
+.menu button.active {
+  background: rgba(255, 200, 80, 0.2);
+  box-shadow: 0 0 10px rgba(255, 200, 80, 0.6);
+}
+
+/* ===== КОНТАКТЫ ===== */
+.icons {
+  display: flex;
+  gap: 12px;
+}
+
+.icons img {
+  width: 32px;
+  filter: drop-shadow(1px 1px 2px black);
+}
+
+/* ===== CONTENT ===== */
+.content {
+  flex: 1;
+  background: rgba(0,0,0,0.55);
+  border-radius: 20px;
+  padding: 30px;
+  overflow-y: auto;
+  animation: slideIn 0.5s ease;
+}
+
+.section {
+  animation: slideIn 0.5s ease;
+}
+
+/* ===== HERO ===== */
+.hero {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+}
+
+.hero img {
+  width: 40%;
+  border-radius: 15px;
+}
+
+.hero-text h1 {
+  font-size: 36px;
+  margin-bottom: 15px;
+  text-shadow: 2px 2px 4px black;
+}
+
+.hero-text p {
+  font-size: 20px;
+  line-height: 1.5;
+  text-shadow: 1px 1px 3px black;
+}
+
+/* ===== АНИМАЦИЯ ===== */
+@keyframes slideIn {
+  from { transform: translateX(60px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+/* ===== МОБИЛКА ===== */
+.mobile-menu-btn {
+  display: none;
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  z-index: 10;
+  font-size: 26px;
+  background: rgba(0,0,0,0.6);
+  color: white;
+  border: none;
+  padding: 10px 14px;
+  border-radius: 10px;
+}
+
+/* ===== ADAPTIVE ===== */
+@media (max-width: 768px) {
+  .layout {
+    flex-direction: column;
+    padding: 10px;
+  }
+
+  .sidebar {
+    position: fixed;
+    left: -100%;
+    top: 0;
+    height: 100%;
+    z-index: 9;
+    transition: 0.4s;
+  }
+
+  .sidebar.open {
+    left: 0;
+  }
+
+  .content {
+    padding: 20px;
+  }
+
+  .hero {
+    flex-direction: column;
+  }
+
+  .hero img {
+    width: 100%;
+  }
+
+  .mobile-menu-btn {
+    display: block;
+  }
+}
