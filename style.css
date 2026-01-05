@@ -90,7 +90,7 @@ body {
   gap: 12px;
 }
 
-.icons img {
+.icons a img {
   width: 28px;
   height: 28px;
   cursor: pointer;
@@ -124,3 +124,53 @@ body {
   line-height: 1.6;
   text-shadow: 1px 1px 3px black;
 }
+
+/* ======================================================
+   ===== БЛОК «ОБ АВТОРЕ» (ШАХМАТНЫЙ ПОРЯДОК) =====
+   ====================================================== */
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  align-items: center;
+}
+
+/* ===== ФОТО АВТОРА ===== */
+.about-item img {
+  width: 70%;            /* ширина фото относительно колонки (можно менять) */
+  max-width: 320px;      /* макс. ширина фото (можно менять) */
+  aspect-ratio: 3 / 4;   /* форма фото (1/1 квадрат, 4/5 вертикальный прямоугольник) */
+  object-fit: cover;      /* обрезка без искажения */
+  display: block;
+  margin: 0 auto;         /* центровка фото по умолчанию */
+  border-radius: 14px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.6);
+}
+
+/* ===== СДВИГ ФОТО / ТЕКСТА ===== */
+/* 
+   Классы для управления позицией фото и текста.
+   По умолчанию центрированы (margin: 0 auto), можно использовать эти классы и менять значения.
+
+.about-item.shift-left {
+    margin-left: 0;        ← сдвигает фото/текст к левому краю колонки
+    margin-right: auto;
+}
+
+.about-item.shift-right {
+    margin-left: auto;     ← сдвигает фото/текст к правому краю колонки
+    margin-right: 0;
+}
+
+Применение:
+<div class="about-item image shift-left">
+   <img src="..." alt="">
+</div>
+
+<div class="about-item text shift-right">
+   <p>Текст</p>
+</div>
+
+Можно экспериментировать с числами: margin-left: 5px; margin-top: 10px; margin-bottom: 5px; чтобы точнее позиционировать.
+*/
