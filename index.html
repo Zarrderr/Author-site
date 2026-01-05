@@ -11,6 +11,7 @@
 
 <canvas id="weather"></canvas>
 
+<!-- Кнопка мобильного меню только для мобильных -->
 <button class="mobile-menu-btn">☰</button>
 
 <div class="layout">
@@ -19,35 +20,60 @@
   <aside class="sidebar">
     <div class="author">
       <div class="author-blog">Авторский блог:</div>
-      <div class="author-name">Павла Задорина</div>
+      <div class="author-name">Павел Задорин</div>
     </div>
 
     <nav class="menu">
-      <button data-section="home" class="active">Мои книги и произведения</button>
-      <button data-section="about">Об авторе</button>
+      <button data-section="about" class="active">Об авторе</button>
+      <button data-section="home">Мои книги и произведения</button>
       <button data-section="poems">Стихи</button>
       <button data-section="books">Книги</button>
       <button data-section="projects">Творческие проекты</button>
       <button data-section="art">Картины</button>
       <button data-section="reviews">Отзывы</button>
-      <button data-section="contacts">Контакты</button>
     </nav>
 
     <div class="contacts">
       <div class="contacts-title">Контакты:</div>
       <div class="icons">
-        <a href="#"><img src="assets/icons/mail.png" alt=""></a>
-        <a href="#"><img src="assets/icons/vk.png" alt=""></a>
-        <a href="#"><img src="assets/icons/telegram.png" alt=""></a>
-        <a href="#"><img src="assets/icons/yandex.png" alt=""></a>
+        <a href="mailto:zarrderr@mail.ru" target="_blank">
+          <!-- сюда вы можете вставить свой email -->
+          <img src="assets/icons/mail.png" alt="Почта">
+        </a>
+        <a href="https://vk.com/zarrderr" target="_blank">
+          <!-- сюда вы можете вставить ссылку на VK -->
+          <img src="assets/icons/vk.png" alt="VK">
+        </a>
+        <a href="https://t.me/Zarrderr" target="_blank">
+          <!-- сюда вы можете вставить ссылку на Telegram -->
+          <img src="assets/icons/telegram.png" alt="Telegram">
+        </a>
+        <a href="https://yandex.ru" target="_blank">
+          <!-- сюда вы можете вставить ссылку на Yandex или сайт -->
+          <img src="assets/icons/yandex.png" alt="Yandex">
+        </a>
       </div>
     </div>
   </aside>
 
   <!-- ПРАВЫЙ БЛОК -->
   <main class="content">
-    <!-- Все секции -->
-    <section id="home" class="section active">
+    <section id="about" class="section active">
+      <div class="about-block">
+        <img src="assets/photos/me1.jpg" alt="Фото автора" class="about-photo">
+        <div class="about-text">
+          <p>Первый абзац текста об авторе...</p>
+        </div>
+      </div>
+      <div class="about-block">
+        <div class="about-text">
+          <p>Второй абзац текста об авторе...</p>
+        </div>
+        <img src="assets/photos/me2.jpg" alt="Фото автора" class="about-photo">
+      </div>
+    </section>
+
+    <section id="home" class="section">
       <div class="hero">
         <img src="assets/books/hero.png" alt="">
         <div class="hero-text">
@@ -61,11 +87,6 @@
           </p>
         </div>
       </div>
-    </section>
-
-    <section id="about" class="section">
-      <h1>Об авторе</h1>
-      <p>Здесь будет информация об авторе.</p>
     </section>
 
     <section id="poems" class="section">
@@ -93,10 +114,6 @@
       <p>Здесь будут отзывы.</p>
     </section>
 
-    <section id="contacts" class="section">
-      <h1>Контакты</h1>
-      <p>Контакты пока не добавлены.</p>
-    </section>
   </main>
 
 </div>
@@ -104,4 +121,3 @@
 <script src="script.js"></script>
 </body>
 </html>
-

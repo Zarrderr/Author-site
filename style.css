@@ -106,8 +106,8 @@ body::before {
 }
 
 .section {
-  display: none;
   animation: slideIn 0.5s ease;
+  display: none;
 }
 
 .section.active {
@@ -138,13 +138,25 @@ body::before {
   text-shadow: 1px 1px 3px black;
 }
 
-/* ===== АНИМАЦИЯ ===== */
-@keyframes slideIn {
-  from { transform: translateX(60px); opacity: 0; }
-  to { transform: translateX(0); opacity: 1; }
+/* ===== ABOUT AUTHOR BLOCKS ===== */
+.about-block {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  margin-bottom: 20px;
 }
 
-/* ===== МОБИЛКА ===== */
+.about-photo {
+  width: 40%;
+  border-radius: 15px;
+}
+
+.about-text {
+  flex: 1;
+  font-size: 18px;
+}
+
+/* ===== МОБИЛЬНОЕ МЕНЮ ===== */
 .mobile-menu-btn {
   display: none;
   position: fixed;
@@ -159,7 +171,7 @@ body::before {
   border-radius: 10px;
 }
 
-/* ===== ADAPTIVE ===== */
+/* ===== АДАПТИВ ===== */
 @media (max-width: 768px) {
   .layout {
     flex-direction: column;
@@ -194,4 +206,19 @@ body::before {
   .mobile-menu-btn {
     display: block;
   }
+
+  .about-block {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .about-photo {
+    width: 100%;
+  }
+}
+
+/* ===== АНИМАЦИЯ ===== */
+@keyframes slideIn {
+  from { transform: translateX(60px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
 }

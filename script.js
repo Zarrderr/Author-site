@@ -7,16 +7,11 @@ if (month >= 2 && month <= 4) season = "spring";
 if (month >= 5 && month <= 7) season = "summer";
 if (month >= 8 && month <= 10) season = "autumn";
 
-body.style.setProperty(
-  "--bg",
-  `url(assets/bg/${season}.jpg)`
-);
 document.body.style.backgroundImage = `url(assets/bg/${season}.jpg)`;
 
 // ===== ПОГОДА =====
 const canvas = document.getElementById("weather");
 const ctx = canvas.getContext("2d");
-
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
@@ -34,17 +29,15 @@ for (let i = 0; i < count; i++) {
 }
 
 function drawWeather() {
-  ctx.clearRect(0,0,canvas.width,canvas.height);
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
   ctx.fillStyle = "white";
-
   particles.forEach(p => {
     ctx.beginPath();
-    ctx.arc(p.x, p.y, p.r, 0, Math.PI*2);
+    ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
     ctx.fill();
     p.y += p.s;
     if (p.y > canvas.height) p.y = 0;
   });
-
   requestAnimationFrame(drawWeather);
 }
 
@@ -55,7 +48,6 @@ if (season === "winter" || season === "autumn") {
 // ===== МОБИЛЬНОЕ МЕНЮ =====
 const menuBtn = document.querySelector(".mobile-menu-btn");
 const sidebar = document.querySelector(".sidebar");
-
 menuBtn.addEventListener("click", () => {
   sidebar.classList.toggle("open");
 });
@@ -66,25 +58,27 @@ const sections = document.querySelectorAll(".section");
 
 menuButtons.forEach(btn => {
   btn.addEventListener("click", () => {
-    const target = btn.getAttribute("data-section");
+    const target = btn.dataset.section;
 
-    // Скрыть все секции
-    sections.forEach(sec => sec.classList.remove("active"));
-
-    // Показать выбранную секцию
-    const section = document.getElementById(target);
-    if (section) section.classList.add("active");
-
-    // Активная кнопка
     menuButtons.forEach(b => b.classList.remove("active"));
     btn.classList.add("active");
 
-    // Закрыть мобильное меню
-    if (sidebar.classList.contains("open")) {
+    sections.forEach(sec => {
+      if (sec.id === target) {
+        sec.classList.add("active");
+      } else {
+        sec.classList.remove("active");
+      }
+    });
+
+    if (window.innerWidth < 768) {
       sidebar.classList.remove("open");
     }
-
-    // Скролл к верху контента
-    document.querySelector(".content").scrollTop = 0;
   });
+});
+
+// ===== РЕЗАЙЗ КАНВАСА =====
+window.addEventListener("resize", () => {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
 });
