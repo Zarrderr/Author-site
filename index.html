@@ -2,116 +2,78 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <title>Авторский блог Павла Задорина</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+  <title>Авторский блок Павла Задорина</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <canvas id="weather"></canvas>
 
-<!-- Кнопка мобильного меню только для мобильных -->
-<button class="mobile-menu-btn">☰</button>
-
 <div class="layout">
 
-  <!-- ЛЕВОЕ МЕНЮ -->
+  <!-- ЛЕВЫЙ БЛОК -->
   <aside class="sidebar">
-    <div class="author">
-      <div class="author-blog">Авторский блог:</div>
-      <div class="author-name">Павел Задорин</div>
+
+    <div class="author-title">
+      Авторский блок<br>Павла Задорина
     </div>
 
     <nav class="menu">
-      <button data-section="about" class="active">Об авторе</button>
-      <button data-section="home">Мои книги и произведения</button>
+      <button class="active" data-section="home">Мои книги и произведения</button>
+      <button data-section="about">Об авторе</button>
       <button data-section="poems">Стихи</button>
       <button data-section="books">Книги</button>
       <button data-section="projects">Творческие проекты</button>
-      <button data-section="art">Картины</button>
       <button data-section="reviews">Отзывы</button>
     </nav>
 
     <div class="contacts">
       <div class="contacts-title">Контакты:</div>
       <div class="icons">
-        <a href="mailto:zarrderr@mail.ru" target="_blank">
-          <!-- сюда вы можете вставить свой email -->
-          <img src="assets/icons/mail.png" alt="Почта">
-        </a>
-        <a href="https://vk.com/zarrderr" target="_blank">
-          <!-- сюда вы можете вставить ссылку на VK -->
-          <img src="assets/icons/vk.png" alt="VK">
-        </a>
-        <a href="https://t.me/Zarrderr" target="_blank">
-          <!-- сюда вы можете вставить ссылку на Telegram -->
-          <img src="assets/icons/telegram.png" alt="Telegram">
-        </a>
-        <a href="https://yandex.ru" target="_blank">
-          <!-- сюда вы можете вставить ссылку на Yandex или сайт -->
-          <img src="assets/icons/yandex.png" alt="Yandex">
-        </a>
+        <img src="assets/icons/vk.png" alt="">
+        <img src="assets/icons/telegram.png" alt="">
+        <img src="assets/icons/mail.png" alt="">
+        <img src="assets/icons/yandex.png" alt="">
       </div>
     </div>
+
   </aside>
 
   <!-- ПРАВЫЙ БЛОК -->
   <main class="content">
-    <section id="about" class="section active">
-      <div class="about-block">
-        <img src="assets/photos/me1.jpg" alt="Фото автора" class="about-photo">
-        <div class="about-text">
-          <p>Первый абзац текста об авторе...</p>
-        </div>
-      </div>
-      <div class="about-block">
-        <div class="about-text">
-          <p>Второй абзац текста об авторе...</p>
-        </div>
-        <img src="assets/photos/me2.jpg" alt="Фото автора" class="about-photo">
-      </div>
+
+    <section id="home" class="section active">
+      <h1>Мои книги и произведения</h1>
+      <p>Здесь будут представлены мои романы, стихи и творческие проекты.</p>
     </section>
 
-    <section id="home" class="section">
-      <div class="hero">
-        <img src="assets/books/hero.png" alt="">
-        <div class="hero-text">
-          <h1>Мои книги и произведения</h1>
-          <p>
-            Здесь собраны мои романы, стихи и творческие проекты.
-            Вдохновение, пришедшее из снов, дорог, трудностей и закатов.
-          </p>
-          <p>
-            Рекомендую начать знакомство с раздела «Книги».
-          </p>
-        </div>
-      </div>
+    <section id="about" class="section">
+      <h1>Об авторе</h1>
+      <p>
+        Павел Задорин родился в феврале 1992 года.  
+        Первые стихи начал писать в детстве.  
+        Серьёзно заниматься творчеством начал после армии.
+      </p>
     </section>
 
     <section id="poems" class="section">
       <h1>Стихи</h1>
-      <p>Здесь будут стихи.</p>
+      <p>Раздел будет наполнен стихами.</p>
     </section>
 
     <section id="books" class="section">
       <h1>Книги</h1>
-      <p>Здесь будут книги.</p>
+      <p>Здесь появятся мои книги.</p>
     </section>
 
     <section id="projects" class="section">
       <h1>Творческие проекты</h1>
-      <p>Здесь будут проекты.</p>
-    </section>
-
-    <section id="art" class="section">
-      <h1>Картины</h1>
-      <p>Здесь будут картины.</p>
+      <p>Описание проектов.</p>
     </section>
 
     <section id="reviews" class="section">
       <h1>Отзывы</h1>
-      <p>Здесь будут отзывы.</p>
+      <p>Отзывы читателей.</p>
     </section>
 
   </main>

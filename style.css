@@ -7,106 +7,105 @@
 body {
   font-family: "Segoe UI", sans-serif;
   color: white;
-  overflow-x: hidden;
 }
 
 /* ===== ФОН ===== */
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
+body {
   background-size: cover;
   background-position: center;
-  filter: brightness(0.75);
-  z-index: -2;
 }
 
-/* ===== КАНВАС ПОГОДЫ ===== */
+/* ===== КАНВАС ===== */
 #weather {
   position: fixed;
   inset: 0;
   z-index: -1;
 }
 
-/* ===== ОБЩИЙ ЛЕЙАУТ ===== */
+/* ===== ЛЕЙАУТ ===== */
 .layout {
   display: flex;
-  gap: 20px;
-  padding: 20px;
+  gap: 24px;
+  padding: 24px;
   min-height: 100vh;
 }
 
 /* ===== SIDEBAR ===== */
 .sidebar {
-  width: 300px;
-  background: rgba(0,0,0,0.55);
+  width: 320px;
+  background: rgba(0,0,0,0.6);
   border-radius: 20px;
-  padding: 25px;
+  padding: 28px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
 }
 
-.author-blog,
-.contacts-title {
-  font-size: 16px;
-  margin-bottom: 6px;
-  text-shadow: 1px 1px 2px black;
-}
-
-.author-name {
+/* ===== ЗАГОЛОВОК ===== */
+.author-title {
   font-size: 26px;
   font-weight: bold;
   margin-bottom: 30px;
-  text-shadow: 2px 2px 3px black;
+  text-shadow: 2px 2px 4px black;
 }
 
 /* ===== МЕНЮ ===== */
+.menu {
+  margin-bottom: auto;
+}
+
 .menu button {
   display: block;
   width: 100%;
   margin-bottom: 10px;
-  padding: 12px;
+  padding: 10px 12px;
   background: transparent;
   border: none;
   color: white;
-  font-size: 18px;
+  font-size: 17px;
   text-align: left;
   cursor: pointer;
   border-radius: 10px;
-  text-shadow: 1px 1px 2px black;
-  transition: 0.3s;
+  transition: 0.2s;
 }
 
 .menu button:hover,
 .menu button.active {
-  background: rgba(255, 200, 80, 0.2);
-  box-shadow: 0 0 10px rgba(255, 200, 80, 0.6);
+  background: rgba(255, 200, 80, 0.25);
+  box-shadow: 0 0 10px rgba(255,200,80,0.6);
+  transform: translateX(6px);
 }
 
 /* ===== КОНТАКТЫ ===== */
+.contacts {
+  margin-top: 30px;
+}
+
+.contacts-title {
+  font-size: 15px;
+  margin-bottom: 10px;
+}
+
 .icons {
   display: flex;
   gap: 12px;
 }
 
 .icons img {
-  width: 32px;
+  width: 28px;
+  height: 28px;
+  cursor: pointer;
   filter: drop-shadow(1px 1px 2px black);
 }
 
 /* ===== CONTENT ===== */
 .content {
   flex: 1;
-  background: rgba(0,0,0,0.55);
+  background: rgba(0,0,0,0.6);
   border-radius: 20px;
-  padding: 30px;
-  overflow-y: auto;
-  animation: slideIn 0.5s ease;
+  padding: 32px;
 }
 
 .section {
-  animation: slideIn 0.5s ease;
   display: none;
 }
 
@@ -114,111 +113,14 @@ body::before {
   display: block;
 }
 
-/* ===== HERO ===== */
-.hero {
-  display: flex;
-  gap: 30px;
-  align-items: center;
-}
-
-.hero img {
-  width: 40%;
-  border-radius: 15px;
-}
-
-.hero-text h1 {
-  font-size: 36px;
-  margin-bottom: 15px;
+.section h1 {
+  font-size: 32px;
+  margin-bottom: 20px;
   text-shadow: 2px 2px 4px black;
 }
 
-.hero-text p {
-  font-size: 20px;
-  line-height: 1.5;
-  text-shadow: 1px 1px 3px black;
-}
-
-/* ===== ABOUT AUTHOR BLOCKS ===== */
-.about-block {
-  display: flex;
-  gap: 20px;
-  align-items: center;
-  margin-bottom: 20px;
-}
-
-.about-photo {
-  width: 40%;
-  border-radius: 15px;
-}
-
-.about-text {
-  flex: 1;
+.section p {
   font-size: 18px;
-}
-
-/* ===== МОБИЛЬНОЕ МЕНЮ ===== */
-.mobile-menu-btn {
-  display: none;
-  position: fixed;
-  top: 15px;
-  left: 15px;
-  z-index: 10;
-  font-size: 26px;
-  background: rgba(0,0,0,0.6);
-  color: white;
-  border: none;
-  padding: 10px 14px;
-  border-radius: 10px;
-}
-
-/* ===== АДАПТИВ ===== */
-@media (max-width: 768px) {
-  .layout {
-    flex-direction: column;
-    padding: 10px;
-  }
-
-  .sidebar {
-    position: fixed;
-    left: -100%;
-    top: 0;
-    height: 100%;
-    z-index: 9;
-    transition: 0.4s;
-  }
-
-  .sidebar.open {
-    left: 0;
-  }
-
-  .content {
-    padding: 20px;
-  }
-
-  .hero {
-    flex-direction: column;
-  }
-
-  .hero img {
-    width: 100%;
-  }
-
-  .mobile-menu-btn {
-    display: block;
-  }
-
-  .about-block {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .about-photo {
-    width: 100%;
-  }
-}
-
-/* ===== АНИМАЦИЯ ===== */
-@keyframes slideIn {
-  from { transform: translateX(60px); opacity: 0; }
-  to { transform: translateX(0); opacity: 1; }
+  line-height: 1.6;
+  text-shadow: 1px 1px 3px black;
 }
