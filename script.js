@@ -59,3 +59,32 @@ const sidebar = document.querySelector(".sidebar");
 menuBtn.addEventListener("click", () => {
   sidebar.classList.toggle("open");
 });
+
+// ===== ПЕРЕКЛЮЧЕНИЕ РАЗДЕЛОВ =====
+const menuButtons = document.querySelectorAll(".menu button");
+const sections = document.querySelectorAll(".section");
+
+menuButtons.forEach(btn => {
+  btn.addEventListener("click", () => {
+    const target = btn.getAttribute("data-section");
+
+    // Скрыть все секции
+    sections.forEach(sec => sec.classList.remove("active"));
+
+    // Показать выбранную секцию
+    const section = document.getElementById(target);
+    if (section) section.classList.add("active");
+
+    // Активная кнопка
+    menuButtons.forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+
+    // Закрыть мобильное меню
+    if (sidebar.classList.contains("open")) {
+      sidebar.classList.remove("open");
+    }
+
+    // Скролл к верху контента
+    document.querySelector(".content").scrollTop = 0;
+  });
+});
