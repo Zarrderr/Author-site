@@ -102,10 +102,29 @@ if (burger) {
     content.classList.toggle("shifted");
   });
 
-  document.querySelectorAll(".menu button").forEach(btn => {
-    btn.addEventListener("click", () => {
+document.querySelectorAll(".menu button").forEach(btn => {
+  btn.addEventListener("click", () => {
+
+    // ===== Мобильное меню: закрытие при повторном клике на активный раздел =====
+    const target = btn.dataset.section;
+
+    // Если текущий раздел уже активен и меню открыто, закрываем меню
+    if (btn.classList.contains("active") && sidebar.classList.contains("open")) {
       sidebar.classList.remove("open");
       content.classList.remove("shifted");
-    });
+      return; // выходим, чтобы дальше не переключать контент
+    }
+
+    // Если кликнули на другой раздел — закрываем меню и переключаем контент
+    sidebar.classList.remove("open");
+    content.classList.remove("shifted");
+
+    // Меняем активный раздел (как у тебя уже было)
+    buttons.forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+
+    sections.forEach(sec => sec.classList.remove("active"));
+    document.getElementById(target).classList.add("active");
   });
+});
 }
