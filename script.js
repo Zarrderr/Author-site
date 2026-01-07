@@ -1,3 +1,7 @@
+// ======================================================
+// ===== ОБЩИЕ НАСТРОЙКИ =====
+// ======================================================
+
 // ===== ФОН ПО СЕЗОНУ =====
 const month = new Date().getMonth();
 let season = "winter";
@@ -8,58 +12,56 @@ if (month >= 8 && month <= 10) season = "autumn";
 
 document.body.style.backgroundImage = `url(assets/bg/${season}.jpg)`;
 
-// ===== СНЕГ (ПУШИСТЫЙ, С ЛУЧИКАМИ) =====
+// ===== СНЕГ (только для зимы) =====
 const canvas = document.getElementById("weather");
 const ctx = canvas.getContext("2d");
+
+// canvas не перехватывает клики
+canvas.style.pointerEvents = "none";
 
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
 let particles = [];
 
-// Создаём снежинки
 for (let i = 0; i < 120; i++) {
   particles.push({
     x: Math.random() * canvas.width,
     y: Math.random() * canvas.height,
-    r: Math.random() * 5 + 2,   // радиус: 2-7px (можно менять)
-    s: Math.random() * 1 + 1    // скорость падения: 1-3px (можно менять)
+    r: Math.random() * 5 + 2,
+    s: Math.random() * 1 + 1
   });
 }
 
-// Функция для рисования пушистой снежинки
 function drawSnowflake(x, y, r) {
-  const spikes = 6; // количество лучиков (можно менять)
+  const spikes = 6;
   const step = (Math.PI * 2) / spikes;
-  
-  // Центральный кружок
+
   ctx.beginPath();
   ctx.arc(x, y, r / 2, 0, Math.PI * 2);
-  ctx.fillStyle = "rgba(255,255,255,0.9)"; // чуть прозрачный центр
+  ctx.fillStyle = "rgba(255,255,255,0.9)";
   ctx.fill();
 
-  // Лучики
-  ctx.strokeStyle = "rgba(255,255,255,0.8)"; // прозрачные пушистые лучики
-  ctx.lineWidth = 1; // толщина линии, можно уменьшить 0.5 для мягкости
+  ctx.strokeStyle = "rgba(255,255,255,0.8)";
+  ctx.lineWidth = 1;
 
   for (let i = 0; i < spikes; i++) {
     const angle = i * step;
-    const xEnd = x + Math.cos(angle) * r;
-    const yEnd = y + Math.sin(angle) * r;
-
     ctx.beginPath();
     ctx.moveTo(x, y);
-    ctx.lineTo(xEnd, yEnd);
+    ctx.lineTo(
+      x + Math.cos(angle) * r,
+      y + Math.sin(angle) * r
+    );
     ctx.stroke();
   }
 }
 
-// Основная функция отрисовки снега
 function drawSnow() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
   particles.forEach(p => {
-    drawSnowflake(p.x, p.y, p.r); // пушистая снежинка
+    drawSnowflake(p.x, p.y, p.r);
     p.y += p.s;
     if (p.y > canvas.height) p.y = 0;
   });
@@ -67,64 +69,112 @@ function drawSnow() {
   requestAnimationFrame(drawSnow);
 }
 
-// Запуск снега только зимой
 if (season === "winter") drawSnow();
 
-// ===== МЕНЮ =====
-const buttons = document.querySelectorAll(".menu button");
-const sections = document.querySelectorAll(".section");
 
-buttons.forEach(btn => {
-  btn.addEventListener("click", () => {
-    const target = btn.dataset.section;
+// ======================================================
+// ===== ОПРЕДЕЛЕНИЕ ВЕРСИИ (DESKTOP / MOBILE) =====
+// ======================================================
 
-    buttons.forEach(b => b.classList.remove("active"));
-    btn.classList.add("active");
+let isMobile = window.innerWidth <= 768;
 
-    sections.forEach(sec => sec.classList.remove("active"));
-    document.getElementById(target).classList.add("active");
+const desktopContainer = document.querySelector(".desktop-version");
+const mobileContainer = document.querySelector(".mobile-version");
+
+function showCorrectVersion() {
+  desktopContainer.style.display = isMobile ? "none" : "block";
+  mobileContainer.style.display = isMobile ? "block" : "none";
+}
+
+showCorrectVersion();
+
+
+// ======================================================
+// ===== DESKTOP VERSION LOGIC =====
+// ======================================================
+
+function initDesktop() {
+  const buttons = desktopContainer.querySelectorAll(".menu button");
+  const sections = desktopContainer.querySelectorAll(".section");
+
+  buttons.forEach(btn => {
+    btn.addEventListener("click", () => {
+      const target = btn.dataset.section;
+
+      buttons.forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+
+      sections.forEach(sec => sec.classList.remove("active"));
+      desktopContainer.querySelector(`#${target}`).classList.add("active");
+    });
   });
-});
-
+}
 
 
 // ======================================================
-// ДОБАВЛЕНО: мобильное меню (НЕ ЛОМАЕТ DESKTOP)
+// ===== MOBILE VERSION LOGIC =====
 // ======================================================
 
-const burger = document.querySelector(".burger");
-const sidebar = document.querySelector(".sidebar");
-const content = document.querySelector(".content");
+function initMobile() {
+  const buttons = mobileContainer.querySelectorAll(".menu button");
+  const sections = mobileContainer.querySelectorAll(".section");
+  const sidebar = mobileContainer.querySelector(".sidebar");
+  const content = mobileContainer.querySelector(".content");
+  const burger = mobileContainer.querySelector(".burger");
 
-if (burger) {
-  burger.addEventListener("click", () => {
+  if (!burger) return;
+
+  burger.onclick = () => {
     sidebar.classList.toggle("open");
     content.classList.toggle("shifted");
-  });
+  };
 
-document.querySelectorAll(".menu button").forEach(btn => {
-  btn.addEventListener("click", () => {
+  buttons.forEach(btn => {
+    btn.onclick = () => {
+      const target = btn.dataset.section;
 
-    // ===== Мобильное меню: закрытие при повторном клике на активный раздел =====
-    const target = btn.dataset.section;
+      buttons.forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
 
-    // Если текущий раздел уже активен и меню открыто, закрываем меню
-    if (btn.classList.contains("active") && sidebar.classList.contains("open")) {
+      sections.forEach(sec => sec.classList.remove("active"));
+      mobileContainer.querySelector(`#${target}`).classList.add("active");
+
       sidebar.classList.remove("open");
       content.classList.remove("shifted");
-      return; // выходим, чтобы дальше не переключать контент
-    }
-
-    // Если кликнули на другой раздел — закрываем меню и переключаем контент
-    sidebar.classList.remove("open");
-    content.classList.remove("shifted");
-
-    // Меняем активный раздел (как у тебя уже было)
-    buttons.forEach(b => b.classList.remove("active"));
-    btn.classList.add("active");
-
-    sections.forEach(sec => sec.classList.remove("active"));
-    document.getElementById(target).classList.add("active");
+    };
   });
-});
 }
+
+
+// ======================================================
+// ===== ИНИЦИАЛИЗАЦИЯ =====
+// ======================================================
+
+if (isMobile) {
+  initMobile();
+} else {
+  initDesktop();
+}
+
+
+// ======================================================
+// ===== RESIZE (БЕЗ ПЕРЕЗАГРУЗКИ)
+// ======================================================
+
+window.addEventListener("resize", () => {
+  const isMobileNow = window.innerWidth <= 768;
+
+  if (isMobileNow !== isMobile) {
+    isMobile = isMobileNow;
+    showCorrectVersion();
+
+    if (isMobile) {
+      initMobile();
+    } else {
+      initDesktop();
+    }
+  }
+
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+});

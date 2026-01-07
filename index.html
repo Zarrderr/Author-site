@@ -2,117 +2,152 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Авторский блог Павла Задорина</title>
-  <link rel="stylesheet" href="style.css">
+  <!-- ===== CSS для Desktop и Mobile ===== -->
+  <link rel="stylesheet" href="style.desktop.css">
+  <link rel="stylesheet" href="style.mobile.css">
 </head>
 <body>
 
-<!-- ДОБАВЛЕНО: кнопка мобильного меню -->
-<button class="burger">☰</button>
-
 <canvas id="weather"></canvas>
 
-<div class="layout">
+<!-- ======================================================
+     ===== DESKTOP VERSION =====
+====================================================== -->
+<div class="desktop-version" style="display:flex; flex-direction:column; width:100%;">
 
-  <!-- ЛЕВЫЙ БЛОК -->
-  <aside class="sidebar">
+  <div class="layout">
 
-    <div class="author-title">
-      Авторский блог<br>Павла Задорина
-    </div>
-
-    <nav class="menu">
-      <button data-section="home">Мои книги и произведения</button>
-      <button class="active" data-section="about">Об авторе</button>
-      <button data-section="poems">Стихи</button>
-      <button data-section="books">Книги</button>
-      <button data-section="projects">Творческие проекты</button>
-      <button data-section="reviews">Отзывы</button>
-    </nav>
-
-    <div class="contacts">
-      <div class="contacts-title">Контакты:</div>
-      <div class="icons">
-        <a href="https://vk.com/" target="_blank"><img src="assets/icons/vk.png"></a>
-        <a href="https://t.me/" target="_blank"><img src="assets/icons/telegram.png"></a>
-        <a href="mailto:example@mail.ru"><img src="assets/icons/mail.png"></a>
-        <a href="https://yandex.ru/" target="_blank"><img src="assets/icons/yandex.png"></a>
+    <!-- ЛЕВЫЙ БЛОК DESKTOP -->
+    <aside class="sidebar">
+      <div class="author-title">
+        Авторский блог<br>Павла Задорина
       </div>
-    </div>
 
-  </aside>
+      <nav class="menu">
+        <button data-section="home">Мои книги и произведения</button>
+        <button data-section="about" class="active">Об авторе</button>
+        <button data-section="poems">Стихи</button>
+        <button data-section="books">Книги</button>
+        <button data-section="projects">Творческие проекты</button>
+        <button data-section="reviews">Отзывы</button>
+      </nav>
 
-  <!-- ПРАВЫЙ БЛОК -->
-  <main class="content">
-
-    <section id="home" class="section">
-      <h1>Мои книги и произведения</h1>
-      <p>Здесь будут представлены мои романы, стихи и творческие проекты.</p>
-    </section>
-
-    <section id="about" class="section active">
-      <h1>Об авторе</h1>
-
-      <div class="about-grid">
-
-        <div class="about-item image">
-          <img src="assets/photos/1.jpg">
+      <div class="contacts">
+        <div class="contacts-title">Контакты:</div>
+        <div class="icons">
+          <a href="https://vk.com/" target="_blank"><img src="assets/icons/vk.png"></a>
+          <a href="https://t.me/" target="_blank"><img src="assets/icons/telegram.png"></a>
+          <a href="mailto:example@mail.ru"><img src="assets/icons/mail.png"></a>
+          <a href="https://yandex.ru/" target="_blank"><img src="assets/icons/yandex.png"></a>
         </div>
-        <div class="about-item text">
-          <p>Павел Задорин родился в феврале 1992 года в Челябинске, в небогатой семье. С раннего детства он рано научился говорить и читать, будто слова сами тянулись к нему. Русский язык давался нелегко — особенно грамматика, — но это никогда не останавливало внутреннего стремления придумывать рифмы, истории и целые миры. Желание сочинять было сильнее любых правил.
-Писать стихи Павел начал ещё в школьные годы. Тогда это были первые, наивные, но искренние попытки осмыслить жизнь, задать вопросы о её смысле, боли и надежде. Позже формы становились проще, затем снова усложнялись, превращаясь в своеобразные стихотворные эксперименты и преобразования.
-.</p>
-        </div>
-
-        <div class="about-item text">
-          <p>Служба в армии и последующие годы тяжёлой работы на заводах стали серьёзным испытанием. Физический труд, переезды, потери близких людей — всё это давило, изматывало, заставляло искать выход. Иногда единственным спасением было уйти в свой внутренний мир, придуманный и живой. Именно тогда истории начали рождаться особенно часто, а рифмы — приходить сами собой, будто кто-то диктовал их изнутри.
-Писал урывками: сначала в блокнотах, затем в заметках на телефоне. Позже тексты переносились на компьютер, аккуратно складывались в папки, сохранялись на жёстком диске и в облаке — как будто ждали своего часа. Со временем пришло осознание, что этих текстов стало слишком много, чтобы держать их только для себя
-.</p>
-        </div>
-        <div class="about-item image">
-          <img src="assets/photos/2.jpg">
-        </div>
-
-        <div class="about-item image">
-          <img src="assets/photos/3.jpg">
-        </div>
-        <div class="about-item text">
-          <p>Особое место в творчестве занимают сны. Именно они являются главным источником моего вдохновения. Многие сюжеты, образы и даже целые произведения приходят во сне — уже сформированные, с чёткой структурой и логикой. Проснувшись, остаётся лишь перенести их на бумагу.
-Первой книгой стала повесть «25 минут» — история о человеке, застрявшем в замкнутом временном цикле повторений и отчаянно пытающемся выбраться из него. Это произведение стало важной точкой отсчёта и подтверждением того, что путь выбран не случайно.
-В настоящее время я активно работаю над книгой «Маг под партой», завершение которой запланировано на 2026 год. После выхода книги планирую обратиться в издательства и надеюсь на поддержку читателей и профессионального сообщества.
-Совсем недавно я окончательно понял, что пришло время открыть свои тексты миру — поделиться тем, что рождалось годами: в тишине ночей, в тяжёлых буднях, во снах и воображаемых мирах, которые когда-то помогли выжить и сохранить себя.</p>
-        </div>
-
-        <!--
-        <div class="about-item text">
-          <p>Четвёртый текст</p>
-        </div>
-        <div class="about-item image">
-          <img src="assets/photos/4.jpg">
-        </div>
-        -->
-
       </div>
-    </section>
+    </aside>
 
-    <section id="poems" class="section"><h1>Стихи</h1>
-	<p>Здесь будут представлены стихи моего сочинения.</p></section>    <!-- Это описание раздела  Стихи-->
-	
-    <section id="books" class="section"><h1>Книги</h1>
-	<p>Здесь будут представлены книги и романы моего сочинения, от самых ранних зарисовок до более поздних, серьёзных романов.</p></section>    <!-- Это описание раздела  Стихи-->
-	
-	
-    <section id="projects" class="section"><h1>Творческие проекты</h1>
-	<p>В данном разделе будут представлены различные творческие проекты. Данный раздел будет в дальнейшем доработан и переосмыслен. Возможно, сюда будут добавлены написанная мной музыка, либо какие-то ещё проекты. Например, картины, созданные с помощью искусственного интеллекта и тому подобное..</p></section>    <!-- Это описание раздела  Стихи-->
-	
-	
-    <section id="reviews" class="section"><h1>Отзывы</h1>
-	<p>Отзывы читателей.</p></section>    <!-- Это описание раздела  Стихи-->
+    <!-- ПРАВЫЙ БЛОК DESKTOP -->
+    <main class="content">
 
-  </main>
+      <section id="home" class="section">
+        <h1>Мои книги и произведения</h1>
+        <p>Здесь будут представлены мои романы, стихи и творческие проекты.</p>
+      </section>
 
+      <section id="about" class="section active">
+        <h1>Об авторе</h1>
+
+        <div class="about-grid">
+          <div class="about-item image"><img src="assets/photos/1.jpg"></div>
+          <div class="about-item text"><p>Текст о Павле Задорине...</p></div>
+
+          <div class="about-item image"><img src="assets/photos/2.jpg"></div>
+          <div class="about-item text"><p>Продолжение текста...</p></div>
+
+          <div class="about-item image"><img src="assets/photos/3.jpg"></div>
+          <div class="about-item text"><p>Ещё текст...</p></div>
+        </div>
+      </section>
+
+      <section id="poems" class="section"><h1>Стихи</h1><p>Описание раздела Стихи.</p></section>
+      <section id="books" class="section"><h1>Книги</h1><p>Описание раздела Книги.</p></section>
+      <section id="projects" class="section"><h1>Творческие проекты</h1><p>Описание раздела проектов.</p></section>
+      <section id="reviews" class="section"><h1>Отзывы</h1><p>Отзывы читателей.</p></section>
+
+    </main>
+
+  </div>
 </div>
 
+<!-- ======================================================
+     ===== MOBILE VERSION =====
+====================================================== -->
+<div class="mobile-version" style="display:none; flex-direction:column; width:100%;">
+
+  <!-- БУРГЕР -->
+  <button class="burger">☰</button>
+
+  <div class="layout">
+
+    <!-- ЛЕВЫЙ БЛОК MOBILE -->
+    <aside class="sidebar">
+      <div class="author-title">
+        Авторский блог<br>Павла Задорина
+      </div>
+
+      <nav class="menu">
+        <button data-section="home" class="active">Мои книги и произведения</button>
+        <button data-section="about">Об авторе</button>
+        <button data-section="poems">Стихи</button>
+        <button data-section="books">Книги</button>
+        <button data-section="projects">Творческие проекты</button>
+        <button data-section="reviews">Отзывы</button>
+      </nav>
+
+      <div class="contacts">
+        <div class="contacts-title">Контакты:</div>
+        <div class="icons">
+          <a href="https://vk.com/" target="_blank"><img src="assets/icons/vk.png"></a>
+          <a href="https://t.me/" target="_blank"><img src="assets/icons/telegram.png"></a>
+          <a href="mailto:example@mail.ru"><img src="assets/icons/mail.png"></a>
+          <a href="https://yandex.ru/" target="_blank"><img src="assets/icons/yandex.png"></a>
+        </div>
+      </div>
+    </aside>
+
+    <!-- ПРАВЫЙ БЛОК MOBILE -->
+    <main class="content">
+
+      <section id="home" class="section active">
+        <h1>Мои книги и произведения</h1>
+        <p>Здесь будут представлены мои романы, стихи и творческие проекты.</p>
+      </section>
+
+      <section id="about" class="section">
+        <h1>Об авторе</h1>
+
+        <div class="about-grid">
+          <div class="about-item image"><img src="assets/photos/1.jpg"></div>
+          <div class="about-item text"><p>Текст о Павле Задорине...</p></div>
+
+          <div class="about-item image"><img src="assets/photos/2.jpg"></div>
+          <div class="about-item text"><p>Продолжение текста...</p></div>
+
+          <div class="about-item image"><img src="assets/photos/3.jpg"></div>
+          <div class="about-item text"><p>Ещё текст...</p></div>
+        </div>
+      </section>
+
+      <section id="poems" class="section"><h1>Стихи</h1><p>Описание раздела Стихи.</p></section>
+      <section id="books" class="section"><h1>Книги</h1><p>Описание раздела Книги.</p></section>
+      <section id="projects" class="section"><h1>Творческие проекты</h1><p>Описание раздела проектов.</p></section>
+      <section id="reviews" class="section"><h1>Отзывы</h1><p>Отзывы читателей.</p></section>
+
+    </main>
+
+  </div>
+</div>
+
+<!-- JS -->
 <script src="script.js"></script>
 </body>
 </html>
